@@ -22,7 +22,7 @@ public class DinheiroValidator implements ConstraintValidator<ValidDinheiro, Din
         if(dinheiro.getTipo().equals(DinheiroTipo.NOTA)) {
             return Arrays.binarySearch(NOTA_RANGE, dinheiro.getQuantidade()) != -1;
         }
-        
+
         return true;
     }
 }

@@ -21,9 +21,14 @@ public class ClienteController {
         return this.clienteService.save(cliente);
     }
 
+    @GetMapping("/{clienteId}")
+    public Cliente getClienteById(Long clienteId) {
+        return this.clienteService.getClienteById(clienteId);
+    }
+
     @PutMapping("/{clienteId}/addMoney")
-    public Cliente adicionarDinheiro(@PathVariable Long clienteId,
+    public void adicionarDinheiro(@PathVariable Long clienteId,
                                      @ValidDinheiro @RequestBody Dinheiro dinheiro) {
-        return this.clienteService.adicionarDinheiro(clienteId, dinheiro);
+        this.clienteService.adicionarDinheiro(clienteId, dinheiro);
     }
 }

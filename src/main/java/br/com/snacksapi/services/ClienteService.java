@@ -6,4 +6,6 @@ import br.com.snacksapi.model.Dinheiro;
 public interface ClienteService {
     Cliente save(Cliente cliente);
     Cliente adicionarDinheiro(Long clienteId, Dinheiro dinheiro);
+
+    Cliente getClienteById(Long clienteId);
 }

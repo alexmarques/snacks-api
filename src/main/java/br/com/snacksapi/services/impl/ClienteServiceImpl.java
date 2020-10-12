@@ -30,4 +30,10 @@ public class ClienteServiceImpl implements ClienteService {
         clienteFromRepo.setDinheiro(dinheiroCliente + dinheiro.getQuantidade());
         return this.repository.save(clienteFromRepo);
     }
+
+    @Override
+    public Cliente getClienteById(Long clienteId) {
+        return this.repository.findById(clienteId)
+                .orElseThrow(() -> new ClienteNotFoundException("clienteId", clienteId));
+    }
 }
