@@ -1,5 +1,6 @@
 package br.com.snacksapi.handlers;
 
+import br.com.snacksapi.exceptions.DinheiroInsuficienteException;
 import br.com.snacksapi.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,4 +20,12 @@ public class ErrorHandler {
         return error;
     }
 
+    @ExceptionHandler(DinheiroInsuficienteException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ValidationErrorResponse onDinheiroInsuficienteException(DinheiroInsuficienteException e) {
+        ValidationErrorResponse error = new ValidationErrorResponse();
+        error.getErrors().add(new Error("dinheiro", "dinheiro insuficiente"));
+        return error;
+    }
 }

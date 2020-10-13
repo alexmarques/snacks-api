@@ -22,13 +22,13 @@ public class ClienteController {
     }
 
     @GetMapping("/{clienteId}")
-    public Cliente getClienteById(Long clienteId) {
+    public Cliente getClienteById(@PathVariable Long clienteId) {
         return this.clienteService.getClienteById(clienteId);
     }
 
     @PutMapping("/{clienteId}/addMoney")
     public void adicionarDinheiro(@PathVariable Long clienteId,
-                                     @ValidDinheiro @RequestBody Dinheiro dinheiro) {
+                                  @ValidDinheiro @RequestBody Dinheiro dinheiro) {
         this.clienteService.adicionarDinheiro(clienteId, dinheiro);
     }
 }

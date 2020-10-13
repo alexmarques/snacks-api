@@ -1,6 +1,5 @@
 package br.com.snacksapi.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,10 +16,11 @@ public class Pedido {
     private Cliente cliente;
     @OneToOne
     private Snack snack;
+    private StatusPedido status;
 
     public Pedido(Cliente cliente, Snack snack) {
         this.cliente = cliente;
         this.snack = snack;
+        this.status = StatusPedido.CRIADO;
     }
-
 }
